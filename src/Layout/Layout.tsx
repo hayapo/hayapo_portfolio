@@ -1,4 +1,4 @@
-import Sidebar from "features/Sidebar/Sidebar"
+import { Sidebar } from "features"
 
 type Props = {
   children: React.ReactNode
@@ -6,12 +6,10 @@ type Props = {
 
 function Layout({ children }: Props) {
   return (
-    <main>
-      <div className="relative h-screen w-screen overflow-hidden">
-        {children}
-        <Sidebar />
-      </div>
-    </main>
+    <div className="relative h-screen min-h-full w-screen min-w-max overflow-hidden font-sen">
+      {children}
+      <Sidebar />
+    </div>
   )
 }
 

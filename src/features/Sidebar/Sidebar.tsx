@@ -1,27 +1,31 @@
 import React from "react"
 import Image from "next/image"
+import InternalLink from "components/InternalLink"
+import { pages } from "util/constants"
 
-function Sidebar() {
+export function Sidebar() {
   return (
-    <div className="group flex items-center justify-end align-middle">
-      <div className="absolute left-[85rem] top-[-150px] flex h-[1000px] w-[500px] rotate-12 items-center bg-white duration-500 group-hover:left-[75rem]">
-        <div className="invisible absolute ml-[7.5rem] flex -rotate-12 flex-col gap-y-20 text-black group-hover:visible">
-          <div className="font-sen text-4xl">About</div>
-          <div className="font-sen text-4xl">Skills</div>
-          <div className="font-sen text-4xl">Works</div>
-          <div className="font-sen text-4xl">Contact</div>
+    <div className="flex h-screen w-screen items-center justify-end align-middle">
+      <div className="group absolute right-[-35rem] top-[-25rem] flex h-[170%] w-[40rem] rotate-12 items-center justify-center bg-white  duration-500 hover:right-[-20rem]">
+        <div className="invisible absolute right-[23rem] top-[47%] flex -rotate-12 flex-col gap-y-20 text-black group-hover:visible">
+          {pages.map((page) => (
+            <InternalLink
+              key={page.href}
+              text={page.text}
+              href={page.href}
+              className="text-4xl after:bg-black"
+            />
+          ))}
         </div>
-      </div>
-      <div className="group-hover: absolute mr-[11rem] mt-[31.5rem] duration-500 group-hover:mr-[22rem] group-hover:animate-flip group-hover:[animation-fill-mode:forwards]">
-        <Image
-          src="/RightArrow.svg"
-          alt="Right Arrow Icon"
-          width={70}
-          height={70}
-        />
+        <div className="absolute left-[3rem] top-[61%] h-full w-[8rem] -rotate-12">
+          <Image
+            src="/RightArrow.svg"
+            alt="Right Arrow Icon"
+            width={25}
+            height={25}
+          />
+        </div>
       </div>
     </div>
   )
 }
-
-export default Sidebar
